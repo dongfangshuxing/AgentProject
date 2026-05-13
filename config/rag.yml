@@ -1,0 +1,3 @@
+chat_model_name: qwen-max
+embedding_name: text-embedding-v4
+api_key: sk-2f30709cc4c640d396e093abe9d6078a

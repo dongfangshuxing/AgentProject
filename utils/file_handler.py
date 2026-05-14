@@ -1,7 +1,7 @@
 import hashlib
 import os
-from document import Document
 from utils.logger_handler import logger
+from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
 
 
@@ -60,7 +60,7 @@ def listdir_with_allowed_type(path: str, allowed_types: tuple[str]):
         if file.endswith(allowed_types):
             file_list.append(os.path.join(path, file))
 
-    return file_list
+    return tuple(file_list)
 
 
 def pdf_loader(file_path: str, password=None) -> list[Document]:
@@ -68,6 +68,6 @@ def pdf_loader(file_path: str, password=None) -> list[Document]:
     return PyPDFLoader(file_path, password).load()
 
 
-def txt_loader(file_path: str) -> list[Document]:
+def text_loader(file_path: str) -> list[Document]:
     """TXT 加载器，返回 LangChain Document 列表"""
-    return TextLoader(file_path).load()
+    return TextLoader(file_path, encoding="utf-8").load()

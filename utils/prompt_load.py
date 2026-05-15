@@ -64,8 +64,3 @@ def load_report_prompt():
     except Exception as e:
         logger.error(f"[load_report_prompt] 读取提示词文件失败：{report_prompt_path}，错误：{str(e)}")
         raise
-
-
-if __name__ == '__main__':
-    docx = load_report_prompt()
-    print(docx)

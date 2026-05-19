@@ -72,6 +72,7 @@ def log_before_model(
 @dynamic_prompt
 def report_prompt_switch(request: ModelRequest):
     is_report = request.runtime.context.get("report", False)
+    print("=" * 30)
     if is_report:
         return load_report_prompt()
     return load_system_prompt()

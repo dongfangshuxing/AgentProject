@@ -22,10 +22,10 @@ class ReactAgent():
         for chuck in self.agent.stream(input_dict, stream_mode="values", context={"report": False}):
             latest_message = chuck["messages"][-1]
             if latest_message.content:
-                yield latest_message.content.strip()
+                yield latest_message.content.strip() + "\n"
 
 
 if __name__ == '__main__':
     agent = ReactAgent()
-    for chuck in agent.execute_stream("扫地机器人在我所在的地区的气温下如何保养"):
+    for chuck in agent.execute_stream("给我生成我的使用报告"):
         print(chuck, end="", flush=True)
